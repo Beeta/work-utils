@@ -18,18 +18,20 @@ public class testHBase extends TestCase {
 
         HBaseAPI.init();
 
-        Table a = HBaseAPI.connection.getTable(TableName.valueOf("user_current_portrait"));
-        List<Map<String, String>> dataByValueFilterWithoutClose = HBaseAPI.getDataBySingleColumnValueFilterWithoutClose(a, "portrait","appver","4.4.4");
-
-        int i = 0;
-        for (Map<String, String> aa : dataByValueFilterWithoutClose) {
-            System.out.println(aa);
-            i++;
-            if (i == 10)
-                break;
-        }
-
-        System.out.println(dataByValueFilterWithoutClose.size());
+//        Table a = HBaseAPI.connection.getTable(TableName.valueOf("user_current_portrait"));
+//        List<Map<String, String>> dataByValueFilterWithoutClose = HBaseAPI.getDataBySingleColumnValueFilterWithoutClose(a, "portrait","appver","4.4.4");
+//
+//        int i = 0;
+//        for (Map<String, String> aa : dataByValueFilterWithoutClose) {
+//            System.out.println(aa);
+//            i++;
+//            if (i == 10)
+//                break;
+//        }
+//
+//        System.out.println(dataByValueFilterWithoutClose.size());
+        List<String> list = HBaseAPI.listTables(false);
+        System.out.println(list);
 //
 //
         HBaseAPI.close();
