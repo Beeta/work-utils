@@ -17,29 +17,29 @@
 <!-- Put site-specific property overrides in this file. -->
 
 <configuration>
-	<property>
-        	<name>hadoop.tmp.dir</name>
-       		<value>/home/bphadoop/tmp</value>
-	</property>
-	<property>
-        	<name>fs.defaultFS</name>
-        	<value>hdfs://hadoopns1</value>
-    	</property>	
-	<property>
-  		<name>dfs.journalnode.edits.dir</name>
-  		<value>/home/bphadoop/journalnode/data</value>
-	</property>
-	<property>
-		<name>ha.zookeeper.quorum</name>
-		<value>192.168.4.225:2181,192.168.4.216:2181,192.168.4.156:2181</value>
-	</property>
-	 <property>
-		<name>hadoop.proxyuser.bphadoop.hosts</name>
-		<value>*</value>
-  	</property>
-	<property>
-		<name>hadoop.proxyuser.bphadoop.groups</name>
-		<value>*</value>
-	</property>
+    <property>
+        <name>hadoop.tmp.dir</name>
+        <value>/home/bphadoop/tmp</value>
+    </property>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://hadoopns1</value>
+    </property>
+    <property>
+        <name>dfs.journalnode.edits.dir</name>
+        <value>/home/bphadoop/journalnode/data</value>
+    </property>
+    <property>
+        <name>ha.zookeeper.quorum</name>
+        <value>192.168.4.225:2181,192.168.4.216:2181,192.168.4.156:2181</value>
+    </property>
+    <property>
+        <name>hadoop.proxyuser.bphadoop.hosts</name>
+        <value>*</value>
+    </property>
+    <property>
+        <name>hadoop.proxyuser.bphadoop.groups</name>
+        <value>*</value>
+    </property>
 
 </configuration>

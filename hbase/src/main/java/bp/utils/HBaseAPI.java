@@ -285,9 +285,8 @@ public class HBaseAPI {
     }
 
 
-
     // 单列按值过滤器
-    public static List<Map<String, String>> getDataBySingleColumnValueFilterWithoutClose(Table table,String family,String column, String key) throws IOException {
+    public static List<Map<String, String>> getDataBySingleColumnValueFilterWithoutClose(Table table, String family, String column, String key) throws IOException {
         List<Map<String, String>> records = new ArrayList<Map<String, String>>();
         Scan scan = new Scan();
 
@@ -367,6 +366,14 @@ public class HBaseAPI {
             put.addColumn(Bytes.toBytes(colFamily), Bytes.toBytes(val.getKey()), Bytes.toBytes(val.getValue().toString()));
         }
         return put;
+    }
+
+    // 根据key删除指定行的指定列们
+    public static void deleteColumns(Table table, String rowKey, String family, String... colmuns) throws IOException {
+        Delete delete = new Delete(Bytes.toBytes(rowKey));
+        for (String str : colmuns)
+            delete.addColumns(Bytes.toBytes(family), Bytes.toBytes(str));
+        table.delete(delete);
     }
 }
 
