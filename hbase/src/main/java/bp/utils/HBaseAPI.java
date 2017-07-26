@@ -334,7 +334,7 @@ public class HBaseAPI {
         return records;
     }
 
-    //格式化输出
+    //格式化输出, 将rowkey也添加进了结果中.
     private static Map<String, String> showCell(Result result) {
         Cell[] cells = result.rawCells();
 //        System.out.println(cells.length);
@@ -342,7 +342,7 @@ public class HBaseAPI {
         Map<String, String> record = new HashMap<String, String>();
         for (Cell cell : cells) {
 //            Map<String, String> record = new HashMap<String, String>();
-//            record.put("rowkey", new String(CellUtil.cloneRow(cell)));
+            record.put("rowkey", new String(CellUtil.cloneRow(cell))); // 将行健添加到结果中
             record.put(new String(CellUtil.cloneQualifier(cell)), new String(CellUtil.cloneValue(cell)));
 //            record.put("colFamily", new String(CellUtil.cloneFamily(cell)));
 //            record.put("col", new String(CellUtil.cloneQualifier(cell)));

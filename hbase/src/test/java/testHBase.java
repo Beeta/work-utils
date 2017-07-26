@@ -18,7 +18,7 @@ public class testHBase extends TestCase {
 
         HBaseAPI.init();
 
-//        Table a = HBaseAPI.connection.getTable(TableName.valueOf("user_current_portrait"));
+        Table a = HBaseAPI.connection.getTable(TableName.valueOf("rd_malice_equipment_history"));
 //        List<Map<String, String>> dataByValueFilterWithoutClose = HBaseAPI.getDataBySingleColumnValueFilterWithoutClose(a, "portrait","appver","4.4.4");
 //
 //        int i = 0;
@@ -30,9 +30,13 @@ public class testHBase extends TestCase {
 //        }
 //
 //        System.out.println(dataByValueFilterWithoutClose.size());
-        List<String> list = HBaseAPI.listTables(false);
-        System.out.println(list);
+//        List<String> list = HBaseAPI.listTables(false);
+//        System.out.println(list);
 //
+
+        Map<String, String> dataWithoutClose = HBaseAPI.getDataWithoutClose("2017-07-19_869718026481488", a);
+        System.out.println(dataWithoutClose);
+
 //
         HBaseAPI.close();
 ////        bp.utils.HBaseAPI.init();
