@@ -217,6 +217,25 @@ public class HBaseAPI {
         return showCell(result);
     }
 
+    public static Map<String, String> getDataWithoutClose(Table table, String rowKey, String colFamily, String... colList) throws IOException {
+        if (!isExistWithoutClose(table.getName().getNameAsString())) {
+            return new HashMap<String, String>();
+        }
+        Get get = new Get(Bytes.toBytes(rowKey));
+        //获取指定列族数据
+        if (colFamily.length() != 0)
+            get.addFamily(Bytes.toBytes(colFamily));
+        //获取指定列数据
+        for (String col : colList) {
+            if (col.length() != 0)
+                get.addColumn(Bytes.toBytes(colFamily), Bytes.toBytes(col));
+        }
+        Result result = table.get(get);
+        table.close();
+        close();
+        return showCell(result);
+    }
+
     //    //  根据rowKey, 列族 获取数据
     public static Map<String, String> getData(String tableName, String rowKey, String colFamily) throws IOException {
         return getData(tableName, rowKey, colFamily, Arrays.asList(""));

@@ -34,7 +34,10 @@ public class testHBase extends TestCase {
 //        System.out.println(list);
 //
 
-        Map<String, String> dataWithoutClose = HBaseAPI.getDataWithoutClose("2017-07-19_869718026481488", a);
+//        Map<String, String> dataWithoutClose = HBaseAPI.getDataWithoutClose("2017-07-19_869718026481488", a);
+//        System.out.println(dataWithoutClose);
+
+        Map<String, String> dataWithoutClose = HBaseAPI.getDataWithoutClose(a, "2017-08-02_911443700185028", "cf", "imei", "loginusers90d");
         System.out.println(dataWithoutClose);
 
 //
