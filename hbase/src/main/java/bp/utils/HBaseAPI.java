@@ -217,7 +217,7 @@ public class HBaseAPI {
         return showCell(result);
     }
 
-    public static Map<String, String> getDataWithoutClose(Table table, String rowKey, String colFamily, String... colList) throws IOException {
+    public static Map<String, String> getDataWithoutClose(Table table, String rowKey, String colFamily, List<String> colList) throws IOException {
         if (!isExistWithoutClose(table.getName().getNameAsString())) {
             return new HashMap<String, String>();
         }
@@ -231,8 +231,6 @@ public class HBaseAPI {
                 get.addColumn(Bytes.toBytes(colFamily), Bytes.toBytes(col));
         }
         Result result = table.get(get);
-        table.close();
-        close();
         return showCell(result);
     }
 

@@ -4,6 +4,8 @@ import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.Table;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -37,7 +39,12 @@ public class testHBase extends TestCase {
 //        Map<String, String> dataWithoutClose = HBaseAPI.getDataWithoutClose("2017-07-19_869718026481488", a);
 //        System.out.println(dataWithoutClose);
 
-        Map<String, String> dataWithoutClose = HBaseAPI.getDataWithoutClose(a, "2017-08-02_911443700185028", "cf", "imei", "loginusers90d");
+        List<String> list = new ArrayList<String>() {{
+            add("loginusers90d");
+            add("imei");
+        }};
+
+        Map<String, String> dataWithoutClose = HBaseAPI.getDataWithoutClose(a, "2017-08-02_911443700185028", "cf", list);
         System.out.println(dataWithoutClose);
 
 //
