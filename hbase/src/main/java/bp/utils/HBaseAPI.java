@@ -400,7 +400,7 @@ public class HBaseAPI {
     }
 
     // 根据key删除指定行的指定列们
-    public static void deleteColumns(Table table, String rowKey, String family, String... colmuns) throws IOException {
+    public static void deleteColumns(Table table, String rowKey, String family, List<String> colmuns) throws IOException {
         Delete delete = new Delete(Bytes.toBytes(rowKey));
         for (String str : colmuns)
             delete.addColumns(Bytes.toBytes(family), Bytes.toBytes(str));
