@@ -351,6 +351,20 @@ public class HBaseAPI {
         return records;
     }
 
+    public static List<Map<String, String>> getAllDataWithoutClose(Table table,String colFamily,List<String> colList) throws IOException {
+        List<Map<String, String>> records = new ArrayList<Map<String, String>>();
+        Scan scan = new Scan();
+        for(String col: colList) {
+            scan.addColumn(Bytes.toBytes(colFamily), Bytes.toBytes(col));
+        }
+
+        ResultScanner resultScanner = table.getScanner(scan);
+        for (Result result : resultScanner) {
+            records.add(showCell(result));
+        }
+        return records;
+    }
+
     //格式化输出, 将rowkey也添加进了结果中.
     private static Map<String, String> showCell(Result result) {
         Cell[] cells = result.rawCells();

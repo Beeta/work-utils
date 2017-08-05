@@ -44,8 +44,9 @@ public class testHBase extends TestCase {
             add("imei");
         }};
 
-        Map<String, String> dataWithoutClose = HBaseAPI.getDataWithoutClose(a, "2017-08-02_911443700185028", "cf", list);
-        System.out.println(dataWithoutClose);
+//        Map<String, String> dataWithoutClose = HBaseAPI.getDataWithoutClose(a, "2017-08-02_911443700185028", "cf", list);
+        List<Map<String, String>> allDataWithoutClose = HBaseAPI.getAllDataWithoutClose(a, "cf", Arrays.asList("imei", "loginusers90d"));
+        System.out.println(allDataWithoutClose.size());
 
 //
         HBaseAPI.close();
