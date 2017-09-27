@@ -26,6 +26,8 @@ public class HBaseAPI {
     public static void init() {
         if (conf == null) {
             conf = HBaseConfiguration.create();
+            conf.set("fs.hdfs.impl",org.apache.hadoop.hdfs.DistributedFileSystem.class.getName());
+            conf.set("fs.file.impl",org.apache.hadoop.fs.LocalFileSystem.class.getName());
             try {
                 connection = ConnectionFactory.createConnection(conf);
                 admin = connection.getAdmin();
