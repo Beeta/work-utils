@@ -23,11 +23,11 @@
 	</property>
 	<property>  
                   <name>mapreduce.jobhistory.address</name>  
-                  <value>192.168.4.225:10020</value>  
+                  <value>192.168.4.216:10020</value>  
           </property>  
           <property>  
                 <name>mapreduce.jobhistory.webapp.address</name>  
-                <value>192.168.4.225:19888</value>  
+                <value>192.168.4.216:19888</value>  
        </property>  
        <property>
 		<name>mapreduce.reduce.memory.mb</name>
@@ -45,4 +45,9 @@
 		<name>mapreduce.job.ubertask.enable</name>
 		<value>true</value>
 	</property>
+<!--cun add 6.29-->
+        <property>
+                <name>mapreduce.jobtracker.http.address</name>
+                <value>192.168.4.216:50030</value>
+         </property>
 </configuration>

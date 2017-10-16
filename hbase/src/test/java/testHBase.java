@@ -55,4 +55,10 @@ public class testHBase extends TestCase {
 //        System.out.println(list);
 ////        bp.utils.HBaseAPI.close();
     }
+
+    public void testList() throws IOException {
+        List<String> list = HBaseAPI.listTables(true);
+        System.out.println(list);
+
+    }
 }

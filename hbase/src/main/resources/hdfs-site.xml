@@ -39,26 +39,26 @@
 	</property>
 	<property>
   		<name>dfs.namenode.rpc-address.hadoopns1.namenode1</name>
-		<value>192.168.4.225:8020</value>
+		<value>192.168.4.216:8020</value>
 	</property>
 
 
 	<property>
 		<name>dfs.namenode.rpc-address.hadoopns1.namenode2</name>
-		<value>192.168.4.230:8020</value>
+		<value>192.168.4.217:8020</value>
 	</property>
 		
 	<property>
   		<name>dfs.namenode.http-address.hadoopns1.namenode1</name>
-		<value>192.168.4.225:50070</value>
+		<value>192.168.4.216:50070</value>
 	</property>
 	<property>
 		<name>dfs.namenode.http-address.hadoopns1.namenode2</name>
-		<value>192.168.4.230:50070</value>
+		<value>192.168.4.217:50070</value>
 	</property>
 	<property>
   		<name>dfs.namenode.shared.edits.dir</name>
-  		<value>qjournal://192.168.4.225:8485;192.168.4.230:8485;192.168.4.156:8485/hadoopns1</value>
+  		<value>qjournal://192.168.4.225:8485;192.168.4.216:8485;192.168.4.217:8485/hadoopns1</value>
 	</property>
 	<property>
 		<name>dfs.client.failover.proxy.provider.hadoopns1</name>
