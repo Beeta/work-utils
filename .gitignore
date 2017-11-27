@@ -1,4 +1,4 @@
-/hbase/hbase.iml
-/hbase/.idea
-/hbase/logs
-/hbase/target
+*.iml
+*/.idea
+*/logs
+*/target
