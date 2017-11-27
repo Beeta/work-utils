@@ -35,7 +35,7 @@
 
     <property>
       <name>hbase.master</name>
-      <value>hadoop2:60000</value>
+      <value>hadoop3:60000</value>
     </property>
 
     <property>
