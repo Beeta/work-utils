@@ -63,19 +63,11 @@ public class DateUtil {
     }
 
     public static String convertMs(long time) {
-        return convertMs(time, "yyyy-MM-dd hh:mm:ss");
+        return convertMs(time, "yyyy-MM-dd HH:mm:ss");
     }
 
     public static long getlongDate(String day) {
         return getlongDate(day, "yyyy-MM-dd");
-//        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-//        long longDate = -1;
-//        try {
-//            longDate = df.parse(day).getTime();
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//        return longDate;
     }
 
     // 获取当前时间是第几周
