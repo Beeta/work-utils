@@ -16,6 +16,9 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class DateUtil {
+    public static final String TIME = "yyyy-MM-dd HH:mm:ss";
+    public static final String DATE = "yyyy-MM-dd";
+
     //自定义pattren
     public static String currentDate(String pattern) {
         SimpleDateFormat df = new SimpleDateFormat(pattern);
@@ -241,5 +244,5 @@ public class DateUtil {
         }
         return list;
     }
-    
+
 }
