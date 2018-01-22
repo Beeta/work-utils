@@ -245,4 +245,17 @@ public class DateUtil {
         return list;
     }
 
+
+    // 日期直接的间隔
+    public static int dayPeriod(String initDay,String endDay) {
+        long l = getlongDate(initDay);
+        long l1 = getlongDate(endDay);
+        return (int)((l1 - l) / (1000 * 60 * 60 * 24));
+    }
+
+    public static void main(String[] args) {
+        int i = dayPeriod("2018-01-01", "2018-01-09");
+        System.out.println(i);
+    }
+
 }
