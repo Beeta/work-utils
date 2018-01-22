@@ -26,14 +26,14 @@ public class HBaseAPI {
     public static void init() {
         if (conf == null) {
             conf = HBaseConfiguration.create();
-            conf.set("fs.hdfs.impl",org.apache.hadoop.hdfs.DistributedFileSystem.class.getName());
-            conf.set("fs.file.impl",org.apache.hadoop.fs.LocalFileSystem.class.getName());
-            try {
-                connection = ConnectionFactory.createConnection(conf);
-                admin = connection.getAdmin();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            conf.set("fs.hdfs.impl", org.apache.hadoop.hdfs.DistributedFileSystem.class.getName());
+            conf.set("fs.file.impl", org.apache.hadoop.fs.LocalFileSystem.class.getName());
+        }
+        try {
+            connection = ConnectionFactory.createConnection(conf);
+            admin = connection.getAdmin();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -303,6 +303,23 @@ public class HBaseAPI {
         return records;
     }
 
+    // 基于值和范围的过滤器
+    public static List<Map<String, String>> getRangeDataFilterWithoutClose(Table table, String startRow, String stopRow, String value) throws IOException {
+        List<Map<String, String>> records = new ArrayList<Map<String, String>>();
+        Scan scan = new Scan();
+        scan.setStartRow(Bytes.toBytes(startRow));
+        scan.setStopRow(Bytes.toBytes(stopRow));
+
+        Filter filter = new ValueFilter(CompareFilter.CompareOp.EQUAL, new SubstringComparator(value));
+        scan.setFilter(filter);
+
+        ResultScanner resultScanner = table.getScanner(scan);
+        for (Result result : resultScanner) {
+            records.add(showCell(result));
+        }
+        return records;
+    }
+
 
     // 单列按值过滤器
     public static List<Map<String, String>> getDataBySingleColumnValueFilterWithoutClose(Table table, String family, String column, String key) throws IOException {
@@ -353,10 +370,10 @@ public class HBaseAPI {
         return records;
     }
 
-    public static List<Map<String, String>> getAllDataWithoutClose(Table table,String colFamily,List<String> colList) throws IOException {
+    public static List<Map<String, String>> getAllDataWithoutClose(Table table, String colFamily, List<String> colList) throws IOException {
         List<Map<String, String>> records = new ArrayList<Map<String, String>>();
         Scan scan = new Scan();
-        for(String col: colList) {
+        for (String col : colList) {
             scan.addColumn(Bytes.toBytes(colFamily), Bytes.toBytes(col));
         }
 

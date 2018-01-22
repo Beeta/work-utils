@@ -61,4 +61,20 @@ public class testHBase extends TestCase {
         System.out.println(list);
 
     }
+
+    public void test3() {
+        HBaseAPI.init();
+
+        try {
+            Table tableOri = HBaseAPI.connection.getTable(TableName.valueOf("mba_origin_log"));
+
+            List<Map<String, String>> rangeDataFilterWithoutClose = HBaseAPI.getRangeDataFilterWithoutClose(tableOri, "2018-01-10 00:00:00", "2018-01-10 00:01:00", "\"type\":\"1\"");
+            System.out.println(rangeDataFilterWithoutClose.size());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        HBaseAPI.close();
+
+    }
 }
